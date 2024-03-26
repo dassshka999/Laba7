@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
 import com.topic2.android.notes.theme.NotesTheme
 import com.topic2.android.notes.ui.screens.NotesScreen
+import com.topic2.android.notes.viewmodel.MainViewModel
 import com.topic2.android.notes.viewmodel.MainViewModelFactory
 
 /**

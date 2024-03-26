@@ -1,5 +1,6 @@
 package com.topic2.android.notes.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
@@ -11,7 +12,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.topic2.android.notes.domain.model.NoteModel
 import com.topic2.android.notes.ui.components.Note
 import com.topic2.android.notes.ui.components.TopAppBar
+import com.topic2.android.notes.viewmodel.MainViewModel
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun NotesScreen(viewModel: MainViewModel) {
 
