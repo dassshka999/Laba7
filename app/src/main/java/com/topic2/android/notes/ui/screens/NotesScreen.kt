@@ -5,9 +5,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.FabPosition
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.List
@@ -21,7 +24,6 @@ import com.topic2.android.notes.domain.model.NoteModel
 import com.topic2.android.notes.routing.Screen
 import com.topic2.android.notes.ui.components.AppDrawer
 import com.topic2.android.notes.ui.components.Note
-import com.topic2.android.notes.ui.components.TopAppBar
 import com.topic2.android.notes.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
@@ -36,16 +38,30 @@ fun NotesScreen(viewModel: MainViewModel) {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
 
-   Scaffold(topBar = {
+   Scaffold(
+       topBar = {
        TopAppBar(
-           title = "Notes",
-           icon = Icons.Filled.List,
-           onIconClick = {
-               coroutineScope.launch {
-                   scaffoldState.drawerState.open()
+       title = {
+           Text(
+               text = "Notes",
+               color = MaterialTheme.colors.onPrimary
+           )
+       },
+       navigationIcon = {
+           IconButton(
+               onClick = {
+                   coroutineScope.launch {
+                       scaffoldState.drawerState.open()
+                   }
                }
+           ) {
+              Icon(
+                  imageVector = Icons.Filled.List,
+                  contentDescription = "Drawer Button"
+              )
            }
-       )
+       }
+    )
    },
        scaffoldState = scaffoldState,
        drawerContent = {
