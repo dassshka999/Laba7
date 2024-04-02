@@ -55,12 +55,23 @@ val noteEntry: NoteModel by viewModel.noteEntry.observeAsState(NoteModel())
             onBackClick = {
                           NotesRouter.navigateTo(Screen.Notes)
             },
-            onSaveNoteClick = { },
+            onSaveNoteClick = {
+                              viewModel.saveNote(noteEntry)
+            },
             onOpenColorPickerClick = { },
-            onDeleteNoteClick = { }
+            onDeleteNoteClick = {
+                viewModel.moveNoteToTrash(noteEntry)
+            }
         )
     },
-        content = {}
+        content = {
+            SaveNoteContent(
+                note = noteEntry,
+                onNoteChange = { updateNoteEntry ->
+                    viewModel.onNoteEntryChange(updateNoteEntry)
+                }
+            )
+        }
     )
 }
 
